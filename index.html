@@ -1,21 +1,727 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0b1220"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><title>ÍÇÓÈÉ ÇáÔíÝÊ æÇáÈÕãÉ ÇáÐßíÉ</title>
-<style>:root{--bg:#eef3f9; --surface:#fff; --surface-2:#f7f9fc; --surface-3:#edf3fa;--text:#142033; --muted:#718096; --line:#e2e8f0;--blue:#1677ff; --green:#18b663; --purple:#8b5cf6;--shadow:0 12px 35px rgba(15,23,42,.08);--soft-shadow:0 5px 18px rgba(15,23,42,.06);}body.dark-mode{--bg:#080d17; --surface:#111827; --surface-2:#151f2e; --surface-3:#1b293c;--text:#f1f5f9; --muted:#94a3b8; --line:#293548;--blue:#3d9bff; --green:#25d366;--shadow:0 15px 40px rgba(0,0,0,.35);--soft-shadow:0 5px 18px rgba(0,0,0,.25);}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{min-height:100%}body{margin:0;min-height:100vh;padding:12px 10px 25px;font-family:Tahoma,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at 90% 0%,rgba(22,119,255,.18),transparent 30%),radial-gradient(circle at 0% 100%,rgba(139,92,246,.10),transparent 25%),var(--bg);transition:background .3s,color .3s;}.container{width:100%;max-width:520px;margin:auto;position:relative}
-/* ===== TOP BAR ===== */.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px;padding:5px 2px}.app-brand{display:flex;align-items:center;gap:10px}.app-icon{width:43px;height:43px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;background:linear-gradient(145deg,#2993ff,#075dcc);box-shadow:0 7px 18px rgba(22,119,255,.25);}.app-name{text-align:right}.app-name strong{display:block;font-size:15px;font-weight:900}.app-name span{display:block;margin-top:2px;font-size:10px;color:var(--muted)}.theme-toggle{width:42px;height:42px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:19px;box-shadow:var(--soft-shadow);cursor:pointer;transition:.2s;}.theme-toggle:active{transform:scale(.91)}
-/* ===== CLOCK ===== */.current-clock{display:flex;justify-content:center;align-items:center;gap:6px;color:var(--muted);font-size:12px;font-weight:bold;margin-bottom:16px;}.current-clock::before{content:"?";color:var(--green);font-size:9px;animation:pulse 1.5s infinite}@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
-/* ===== CARD ===== */.main-card{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:17px;box-shadow:var(--shadow);overflow:hidden;position:relative;}.main-card::before{content:"";position:absolute;top:0;right:0;left:0;height:4px;background:linear-gradient(90deg,#1677ff,#8b5cf6,#18b663);}
-/* ===== SETUP ===== */.setup-header{padding:12px 5px 17px;text-align:center}.setup-hero{width:82px;height:82px;margin:4px auto 13px;border-radius:25px;display:flex;align-items:center;justify-content:center;font-size:39px;background:linear-gradient(145deg,#e8f2ff,#d9eaff);box-shadow:0 12px 25px rgba(22,119,255,.13);}body.dark-mode .setup-hero{background:linear-gradient(145deg,#172b46,#13233a)}.setup-title{font-size:21px;font-weight:900;margin-bottom:5px}.setup-subtitle{color:var(--muted);font-size:12px;line-height:1.7}
-/* ===== FORM ===== */.form-card{background:var(--surface-2);border:1px solid var(--line);border-radius:19px;padding:14px;margin-bottom:12px}.form-label{font-size:12px;color:var(--muted);font-weight:bold;margin-bottom:9px;text-align:right}.input-row{display:grid;grid-template-columns:1fr 1.15fr .8fr 1fr;gap:6px;margin-bottom:5px}input[type="number"],select{width:100%;min-width:0;height:48px;padding:0 4px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text);font-size:14px;font-weight:900;text-align:center;outline:none;transition:.2s;}input[type="number"]:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,119,255,.10);}
-/* ===== BUTTONS ===== */.btn{width:100%;min-height:50px;border:0;border-radius:14px;color:#fff;font-size:14px;font-weight:900;cursor:pointer;margin-top:8px;transition:transform .15s,filter .15s;box-shadow:0 7px 16px rgba(0,0,0,.10);}.btn:active{transform:scale(.975);filter:brightness(.94)}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none;filter:none}.btn-green{background:linear-gradient(135deg,#20c76b,#11964e)}.btn-blue{background:linear-gradient(135deg,#2993ff,#075dcc)}.btn-orange{background:linear-gradient(135deg,#ffb52e,#e78b00)}.btn-stop{background:linear-gradient(135deg,#f35b5b,#dc2626)}.btn-icon{display:flex;align-items:center;justify-content:center;gap:9px}.btn-icon span{font-size:19px}
-/* ===== TRACKER ===== */.tracker-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.shift-label{color:var(--muted);font-size:11px;font-weight:bold}.start-time{font-size:16px;font-weight:900;margin-top:3px}.start-time span{color:var(--green)}.live-dot{display:flex;align-items:center;gap:5px;padding:7px 10px;border-radius:20px;background:var(--surface-3);color:var(--muted);font-size:10px;font-weight:900;}.live-dot::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(24,182,99,.12);}
-/* ===== TIMER ===== */.timer-hero{position:relative;min-height:285px;border-radius:23px;background:linear-gradient(145deg,#0c1728,#12243d);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;margin-bottom:13px;box-shadow:0 15px 30px rgba(7,25,50,.20);}.timer-hero::before{content:"";position:absolute;width:270px;height:270px;border-radius:50%;border:1px solid rgba(255,255,255,.06)}.timer-hero::after{content:"";position:absolute;width:205px;height:205px;border-radius:50%;border:1px solid rgba(255,255,255,.05)}.progress-ring{width:235px;height:235px;position:relative;display:flex;align-items:center;justify-content:center}.progress-ring svg{position:absolute;width:235px;height:235px;transform:rotate(-90deg)}.progress-ring-bg{fill:none;stroke:rgba(255,255,255,.08);stroke-width:9}.progress-ring-value{fill:none;stroke:url(#progressGradient);stroke-width:9;stroke-linecap:round;stroke-dasharray:565;stroke-dashoffset:565;transition:stroke-dashoffset .7s ease;}.timer-content{position:relative;z-index:3;text-align:center}.timer-caption{font-size:11px;color:rgba(255,255,255,.65);margin-bottom:5px}.time-display{direction:ltr;font-size:34px;letter-spacing:1px;font-weight:900;line-height:1;text-shadow:0 3px 15px rgba(0,0,0,.35)}.timer-under{font-size:11px;color:rgba(255,255,255,.55);margin-top:9px}
-/* ===== STATUS ===== */.status-badge{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:32px;padding:7px 13px;border-radius:30px;font-size:11px;font-weight:900;margin-bottom:11px;transition:.3s;}.status-normal{background:#fff4ce;color:#966b00;border:1px solid #f4d76e}.status-break{background:#eee5ff;color:#7040b5;border:1px solid #d5c0ff}.status-done{background:#dcfce7;color:#15803d;border:1px solid #a7efbf}body.dark-mode .status-normal{background:#3a3219;color:#f6d45c;border-color:#64551e}body.dark-mode .status-break{background:#302043;color:#c6a2ff;border-color:#513870}body.dark-mode .status-done{background:#12351f;color:#5fe18a;border-color:#246239}
-/* ===== INFO ===== */.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:13px}.info-card{background:var(--surface-2);border:1px solid var(--line);border-radius:15px;padding:12px 5px;text-align:center;box-shadow:var(--soft-shadow);}.info-card-icon{font-size:17px;margin-bottom:4px}.info-card-title{color:var(--muted);font-size:9px;font-weight:bold}.info-card-value{color:var(--blue);font-size:12px;font-weight:900;margin-top:5px;white-space:nowrap}
-/* ===== BREAK ===== */.break-box{display:none;padding:13px;margin-bottom:10px;border-radius:17px;background:linear-gradient(135deg,rgba(139,92,246,.10),var(--surface-2));border:1px dashed rgba(139,92,246,.55);}.break-title{color:var(--purple);font-weight:900;font-size:13px;margin-bottom:8px}
-/* ===== ACTIONS ===== */.action-area{background:var(--surface-2);border:1px solid var(--line);padding:10px;border-radius:18px;margin-top:4px}.action-note{text-align:center;color:var(--muted);font-size:9px;margin-top:9px}
-@media(max-width:390px){body{padding:7px 7px 18px}.main-card{padding:13px;border-radius:22px}.app-name strong{font-size:14px}.setup-title{font-size:19px}.setup-hero{width:72px;height:72px;font-size:34px}.timer-hero{min-height:260px}.progress-ring,.progress-ring svg{width:215px;height:215px}.time-display{font-size:29px}.info-card{padding:10px 2px}.info-card-value{font-size:11px}}</style></head><body><div class="container">
-<!-- TOP BAR --><div class="top-bar"><div class="app-brand"><div class="app-icon">??</div><div class="app-name"><strong>ÇáÔíÝÊ ÇáÐßí</strong><span>Smart Shift</span></div></div><button class="theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" aria-label="ÊÈÏíá ÇáæÖÚ Çááíáí">??</button></div>
-<div class="current-clock" id="currentClock">ÇáÓÇÚÉ ÇáÂä: --:--:--</div>
-<div class="main-card">
-<!-- ================= SETUP ================= --><div id="setupSection"><div class="setup-header"><div class="setup-hero">??</div><div class="setup-title">ÌÇåÒ ÊÈÏÃ ÔíÝÊß¿</div><div class="setup-subtitle">ÓÌá æÞÊ ÇáÏÎæá æÍÏÏ ãÏÉ ÇáÔíÝÊ<br>æÇáÍÇÓÈÉ åÊÊßÝá ÈÇáÈÇÞí</div></div>
-<div class="form-card"><div class="form-label">ÅÚÏÇÏÇÊ ÇáÔíÝÊ</div><div class="input-row"><select id="startHourSelect" aria-label="ÇáÓÇÚÉ"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8" selected>8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select><input type="number" id="startMinuteInput" placeholder="ÏÞÇÆÞ" min="0" max="59" value="00" inputmode="numeric" aria-label="ÇáÏÞÇÆÞ"><select id="amPmSelect" aria-label="ÕÈÇÍÇð Ãã ãÓÇÁð"><option value="AM">Õ</option><option value="PM">ã</option></select><select id="shiftHoursSelect" aria-label="ãÏÉ ÇáÔíÝÊ"><option value="6">6 Ó</option><option value="8" selected>8 Ó</option><option value="8.5">8.5 Ó</option><option value="9">9 Ó</option></select></div></div>
-<button class="btn btn-green btn-icon" onclick="startShift()"><span>??</span> ÈÏÁ ÇáÔíÝÊ</button>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1220">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>حاسبة الشيفت والبصمة الذكية</title>
+<style>
+:root{
+--bg:#eef3f9; --surface:#fff; --surface-2:#f7f9fc; --surface-3:#edf3fa;
+--text:#142033; --muted:#718096; --line:#e2e8f0;
+--blue:#1677ff; --green:#18b663; --purple:#8b5cf6;
+--shadow:0 12px 35px rgba(15,23,42,.08);
+--soft-shadow:0 5px 18px rgba(15,23,42,.06);
+}
+body.dark-mode{
+--bg:#080d17; --surface:#111827; --surface-2:#151f2e; --surface-3:#1b293c;
+--text:#f1f5f9; --muted:#94a3b8; --line:#293548;
+--blue:#3d9bff; --green:#25d366;
+--shadow:0 15px 40px rgba(0,0,0,.35);
+--soft-shadow:0 5px 18px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{min-height:100%}
+body{
+margin:0;min-height:100vh;padding:12px 10px 25px;
+font-family:Tahoma,Arial,sans-serif;color:var(--text);
+background:
+radial-gradient(circle at 90% 0%,rgba(22,119,255,.18),transparent 30%),
+radial-gradient(circle at 0% 100%,rgba(139,92,246,.10),transparent 25%),
+var(--bg);
+transition:background .3s,color .3s;
+}
+.container{width:100%;max-width:520px;margin:auto;position:relative}
+
+/* ===== TOP BAR ===== */
+.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px;padding:5px 2px}
+.app-brand{display:flex;align-items:center;gap:10px}
+.app-icon{
+width:43px;height:43px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+color:#fff;font-size:22px;background:linear-gradient(145deg,#2993ff,#075dcc);
+box-shadow:0 7px 18px rgba(22,119,255,.25);
+}
+.app-name{text-align:right}
+.app-name strong{display:block;font-size:15px;font-weight:900}
+.app-name span{display:block;margin-top:2px;font-size:10px;color:var(--muted)}
+.theme-toggle{
+width:42px;height:42px;border-radius:14px;border:1px solid var(--line);
+background:var(--surface);color:var(--text);font-size:19px;
+box-shadow:var(--soft-shadow);cursor:pointer;transition:.2s;
+}
+.theme-toggle:active{transform:scale(.91)}
+
+/* ===== CLOCK ===== */
+.current-clock{
+display:flex;justify-content:center;align-items:center;gap:6px;
+color:var(--muted);font-size:12px;font-weight:bold;margin-bottom:16px;
+}
+.current-clock::before{content:"●";color:var(--green);font-size:9px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ===== CARD ===== */
+.main-card{
+background:var(--surface);border:1px solid var(--line);border-radius:26px;
+padding:17px;box-shadow:var(--shadow);overflow:hidden;position:relative;
+}
+.main-card::before{
+content:"";position:absolute;top:0;right:0;left:0;height:4px;
+background:linear-gradient(90deg,#1677ff,#8b5cf6,#18b663);
+}
+
+/* ===== SETUP ===== */
+.setup-header{padding:12px 5px 17px;text-align:center}
+.setup-hero{
+width:82px;height:82px;margin:4px auto 13px;border-radius:25px;
+display:flex;align-items:center;justify-content:center;font-size:39px;
+background:linear-gradient(145deg,#e8f2ff,#d9eaff);
+box-shadow:0 12px 25px rgba(22,119,255,.13);
+}
+body.dark-mode .setup-hero{background:linear-gradient(145deg,#172b46,#13233a)}
+.setup-title{font-size:21px;font-weight:900;margin-bottom:5px}
+.setup-subtitle{color:var(--muted);font-size:12px;line-height:1.7}
+
+/* ===== FORM ===== */
+.form-card{background:var(--surface-2);border:1px solid var(--line);border-radius:19px;padding:14px;margin-bottom:12px}
+.form-label{font-size:12px;color:var(--muted);font-weight:bold;margin-bottom:9px;text-align:right}
+.input-row{display:grid;grid-template-columns:1fr 1.15fr .8fr 1fr;gap:6px;margin-bottom:5px}
+input[type="number"],select{
+width:100%;min-width:0;height:48px;padding:0 4px;border:1px solid var(--line);
+border-radius:12px;background:var(--surface);color:var(--text);
+font-size:14px;font-weight:900;text-align:center;outline:none;transition:.2s;
+}
+input[type="number"]:focus,select:focus{
+border-color:var(--blue);box-shadow:0 0 0 3px rgba(22,119,255,.10);
+}
+
+/* ===== BUTTONS ===== */
+.btn{
+width:100%;min-height:50px;border:0;border-radius:14px;color:#fff;
+font-size:14px;font-weight:900;cursor:pointer;margin-top:8px;
+transition:transform .15s,filter .15s;box-shadow:0 7px 16px rgba(0,0,0,.10);
+}
+.btn:active{transform:scale(.975);filter:brightness(.94)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none;filter:none}
+.btn-green{background:linear-gradient(135deg,#20c76b,#11964e)}
+.btn-blue{background:linear-gradient(135deg,#2993ff,#075dcc)}
+.btn-orange{background:linear-gradient(135deg,#ffb52e,#e78b00)}
+.btn-stop{background:linear-gradient(135deg,#f35b5b,#dc2626)}
+.btn-gray{background:linear-gradient(135deg,#8e9aab,#5f6b7c)}
+.btn-icon{display:flex;align-items:center;justify-content:center;gap:9px}
+.btn-icon span{font-size:19px}
+
+/* ===== TRACKER ===== */
+.tracker-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}
+.shift-label{color:var(--muted);font-size:11px;font-weight:bold}
+.start-time{font-size:16px;font-weight:900;margin-top:3px}
+.start-time span{color:var(--green)}
+.live-dot{
+display:flex;align-items:center;gap:5px;padding:7px 10px;border-radius:20px;
+background:var(--surface-3);color:var(--muted);font-size:10px;font-weight:900;
+}
+.live-dot::before{
+content:"";width:7px;height:7px;border-radius:50%;
+background:var(--green);box-shadow:0 0 0 4px rgba(24,182,99,.12);
+}
+
+/* ===== TIMER ===== */
+.timer-hero{
+position:relative;min-height:285px;border-radius:23px;
+background:linear-gradient(145deg,#0c1728,#12243d);color:#fff;
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+overflow:hidden;margin-bottom:13px;box-shadow:0 15px 30px rgba(7,25,50,.20);
+}
+.timer-hero::before{content:"";position:absolute;width:270px;height:270px;border-radius:50%;border:1px solid rgba(255,255,255,.06)}
+.timer-hero::after{content:"";position:absolute;width:205px;height:205px;border-radius:50%;border:1px solid rgba(255,255,255,.05)}
+.progress-ring{width:235px;height:235px;position:relative;display:flex;align-items:center;justify-content:center}
+.progress-ring svg{position:absolute;width:235px;height:235px;transform:rotate(-90deg)}
+.progress-ring-bg{fill:none;stroke:rgba(255,255,255,.08);stroke-width:9}
+.progress-ring-value{
+fill:none;stroke:url(#progressGradient);stroke-width:9;stroke-linecap:round;
+stroke-dasharray:565;stroke-dashoffset:565;transition:stroke-dashoffset .7s ease;
+}
+.timer-content{position:relative;z-index:3;text-align:center}
+.timer-caption{font-size:11px;color:rgba(255,255,255,.65);margin-bottom:5px}
+.time-display{direction:ltr;font-size:34px;letter-spacing:1px;font-weight:900;line-height:1;text-shadow:0 3px 15px rgba(0,0,0,.35)}
+.timer-under{font-size:11px;color:rgba(255,255,255,.55);margin-top:9px}
+
+/* ===== STATUS ===== */
+.status-badge{
+display:inline-flex;align-items:center;justify-content:center;gap:5px;
+min-height:32px;padding:7px 13px;border-radius:30px;font-size:11px;
+font-weight:900;margin-bottom:11px;transition:.3s;
+}
+.status-normal{background:#fff4ce;color:#966b00;border:1px solid #f4d76e}
+.status-break{background:#eee5ff;color:#7040b5;border:1px solid #d5c0ff}
+.status-done{background:#dcfce7;color:#15803d;border:1px solid #a7efbf}
+body.dark-mode .status-normal{background:#3a3219;color:#f6d45c;border-color:#64551e}
+body.dark-mode .status-break{background:#302043;color:#c6a2ff;border-color:#513870}
+body.dark-mode .status-done{background:#12351f;color:#5fe18a;border-color:#246239}
+
+/* ===== INFO ===== */
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:13px}
+.info-card{
+background:var(--surface-2);border:1px solid var(--line);border-radius:15px;
+padding:12px 5px;text-align:center;box-shadow:var(--soft-shadow);
+}
+.info-card-icon{font-size:17px;margin-bottom:4px}
+.info-card-title{color:var(--muted);font-size:9px;font-weight:bold}
+.info-card-value{color:var(--blue);font-size:12px;font-weight:900;margin-top:5px;white-space:nowrap}
+
+/* ===== BREAK ===== */
+.break-box{
+display:none;padding:13px;margin-bottom:10px;border-radius:17px;
+background:linear-gradient(135deg,rgba(139,92,246,.10),var(--surface-2));
+border:1px dashed rgba(139,92,246,.55);
+}
+.break-title{color:var(--purple);font-weight:900;font-size:13px;margin-bottom:8px}
+
+/* ===== ACTIONS ===== */
+.action-area{background:var(--surface-2);border:1px solid var(--line);padding:10px;border-radius:18px;margin-top:4px}
+.action-note{text-align:center;color:var(--muted);font-size:9px;margin-top:9px}
+
+@media(max-width:390px){
+body{padding:7px 7px 18px}
+.main-card{padding:13px;border-radius:22px}
+.app-name strong{font-size:14px}
+.setup-title{font-size:19px}
+.setup-hero{width:72px;height:72px;font-size:34px}
+.timer-hero{min-height:260px}
+.progress-ring,.progress-ring svg{width:215px;height:215px}
+.time-display{font-size:29px}
+.info-card{padding:10px 2px}
+.info-card-value{font-size:11px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="app-brand">
+      <div class="app-icon">⏱️</div>
+      <div class="app-name">
+        <strong>الشيفت الذكي</strong>
+        <span>Smart Shift</span>
+      </div>
+    </div>
+    <button class="theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" aria-label="تبديل الوضع الليلي">🌙</button>
+  </div>
+
+  <div class="current-clock" id="currentClock">الساعة الآن: --:--:--</div>
+
+  <div class="main-card">
+
+    <!-- ================= SETUP ================= -->
+    <div id="setupSection">
+      <div class="setup-header">
+        <div class="setup-hero">🚀</div>
+        <div class="setup-title">جاهز تبدأ شيفتك؟</div>
+        <div class="setup-subtitle">سجل وقت الدخول وحدد مدة الشيفت<br>والحاسبة هتتكفل بالباقي</div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-label">إعدادات الشيفت</div>
+        <div class="input-row">
+          <select id="startHourSelect" aria-label="الساعة">
+            <option value="1">1</option><option value="2">2</option>
+            <option value="3">3</option><option value="4">4</option>
+            <option value="5">5</option><option value="6">6</option>
+            <option value="7">7</option><option value="8" selected>8</option>
+            <option value="9">9</option><option value="10">10</option>
+            <option value="11">11</option><option value="12">12</option>
+          </select>
+          <input type="number" id="startMinuteInput" placeholder="دقائق" min="0" max="59" value="00" inputmode="numeric" aria-label="الدقائق">
+          <select id="amPmSelect" aria-label="صباحاً أم مساءً">
+            <option value="AM">ص</option>
+            <option value="PM">م</option>
+          </select>
+          <select id="shiftHoursSelect" aria-label="مدة الشيفت">
+            <option value="6">6 س</option>
+            <option value="8" selected>8 س</option>
+            <option value="8.5">8.5 س</option>
+            <option value="9">9 س</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn btn-green btn-icon" onclick="startShift()">
+        <span>🚀</span> بدء الشيفت
+      </button>
+      <button class="btn btn-blue btn-icon" onclick="setCurrentTime()">
+        <span>📍</span> إثبات حضور الآن
+      </button>
+      <button class="btn btn-blue btn-icon" onclick="exportToExcel()">
+        <span>📊</span> تحميل سجل الشيفتات (Excel)
+      </button>
+      <button class="btn btn-gray btn-icon" onclick="clearHistory()">
+        <span>🗑️</span> تصفير السجل بالكامل
+      </button>
+    </div>
+
+    <!-- ================= TRACKER ================= -->
+    <div id="trackerSection" style="display:none;">
+
+      <div class="tracker-head">
+        <div>
+          <div class="shift-label">وقت تسجيل الدخول</div>
+          <div class="start-time"><span id="displayStartTime">--:--</span></div>
+        </div>
+        <div class="live-dot">مباشر</div>
+      </div>
+
+      <div class="status-badge status-normal" id="statusBadge">جاري العمل...</div>
+
+      <div class="timer-hero">
+        <div class="progress-ring">
+          <svg viewBox="0 0 200 200">
+            <defs>
+              <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2993ff"/>
+                <stop offset="100%" stop-color="#22d36d"/>
+              </linearGradient>
+            </defs>
+            <circle class="progress-ring-bg" cx="100" cy="100" r="90"></circle>
+            <circle class="progress-ring-value" id="progressRing" cx="100" cy="100" r="90"></circle>
+          </svg>
+          <div class="timer-content">
+            <div class="timer-caption" id="timerCaption">الوقت المتبقي</div>
+            <div class="time-display" id="remainingTimeDisplay">--:--:--</div>
+            <div class="timer-under" id="progressText">نسبة الإنجاز: 0%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-icon">⏱️</div>
+          <div class="info-card-title">المنقضي (عمل فعلي)</div>
+          <div class="info-card-value" id="elapsedTimeDisplay">00:00:00</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🏁</div>
+          <div class="info-card-title">وقت الانتهاء</div>
+          <div class="info-card-value" id="targetTimeDisplay">--:--</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">☕</div>
+          <div class="info-card-title">الاستراحة</div>
+          <div class="info-card-value" id="breakTimeDisplay">0 دقيقة</div>
+        </div>
+      </div>
+
+      <div class="break-box" id="breakBox">
+        <div class="break-title">☕ أنت في استراحة الآن</div>
+        <button class="btn btn-green btn-icon" onclick="endBreak()">
+          <span>▶️</span> إنهاء الاستراحة والعودة
+        </button>
+      </div>
+
+      <div class="action-area">
+        <button class="btn btn-orange btn-icon" id="breakToggleBtn" onclick="toggleBreak()">
+          <span>☕</span> بدء استراحة
+        </button>
+        <button class="btn btn-stop btn-icon" onclick="stopShift()">
+          <span>🛑</span> إنهاء الشيفت وتصفير العد
+        </button>
+        <button class="btn btn-blue btn-icon" onclick="exportToExcel()">
+          <span>📊</span> تحميل تقرير Excel
+        </button>
+        <div class="action-note">البيانات محفوظة تلقائيًا على جهازك</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+Smart Shift — المنطق البرمجي
+========================================================= */
+
+let shiftData = JSON.parse(localStorage.getItem('smartShiftData')) || null;
+let timerInterval = null;
+let shiftEnded = false;
+
+/* ترحيل البيانات القديمة */
+if (shiftData && shiftData.breakMsTotal === undefined) {
+  shiftData.breakMsTotal = (shiftData.breakMinutesTotal || 0) * 60 * 1000;
+  delete shiftData.breakMinutesTotal;
+  localStorage.setItem('smartShiftData', JSON.stringify(shiftData));
+}
+
+/* ===== أدوات ===== */
+function fmtHMS(totalSeconds) {
+  totalSeconds = Math.max(0, Math.floor(totalSeconds));
+  const h = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+  const m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+  const s = String(totalSeconds % 60).padStart(2, '0');
+  return h + ':' + m + ':' + s;
+}
+
+function saveShift() {
+  localStorage.setItem('smartShiftData', JSON.stringify(shiftData));
+}
+
+/* ===== الساعة الحالية ===== */
+function updateClock() {
+  const now = new Date();
+  document.getElementById('currentClock').innerText = 'الساعة الآن: ' + now.toLocaleTimeString('en-US', {
+    hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true
+  });
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+/* ===== ضبط الوقت الحالي في النموذج ===== */
+function setCurrentTime() {
+  const now = new Date();
+  let hours = now.getHours();
+  const minutes = now.getMinutes();
+  const amPm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12;
+
+  document.getElementById('startHourSelect').value = hours;
+  document.getElementById('startMinuteInput').value = String(minutes).padStart(2, '0');
+  document.getElementById('amPmSelect').value = amPm;
+}
+
+/* ===== الوضع الليلي ===== */
+function toggleTheme() {
+  document.body.classList.toggle('dark-mode');
+  const isDark = document.body.classList.contains('dark-mode');
+  document.getElementById('themeToggleBtn').innerText = isDark ? '☀️' : '🌙';
+  localStorage.setItem('smartShiftTheme', isDark ? 'dark' : 'light');
+}
+if (localStorage.getItem('smartShiftTheme') === 'dark') {
+  document.body.classList.add('dark-mode');
+  document.getElementById('themeToggleBtn').innerText = '☀️';
+}
+
+/* =========================================================
+بدء الشيفت
+========================================================= */
+function startShift() {
+  const startHour = parseInt(document.getElementById('startHourSelect').value);
+  const startMinute = Math.min(59, Math.max(0,
+    parseInt(document.getElementById('startMinuteInput').value) || 0));
+  document.getElementById('startMinuteInput').value = String(startMinute).padStart(2, '0');
+
+  const amPm = document.getElementById('amPmSelect').value;
+  const hoursCount = parseFloat(document.getElementById('shiftHoursSelect').value);
+
+  const now = Date.now();
+
+  let hours = startHour;
+  if (amPm === 'PM' && hours < 12) hours += 12;
+  if (amPm === 'AM' && hours === 12) hours = 0;
+
+  const today = new Date();
+  today.setHours(hours, startMinute, 0, 0);
+
+  let startDate = new Date(today.getTime());
+
+  if (startDate.getTime() > now) {
+    const gapToFuture = startDate.getTime() - now;
+    const yesterday = startDate.getTime() - 86400000;
+    if (now - yesterday < gapToFuture) {
+      startDate = new Date(yesterday);
+    }
+  }
+
+  shiftData = {
+    startTime: startDate.getTime(),
+    shiftHours: hoursCount,
+    breakMsTotal: 0,
+    isBreakActive: false,
+    breakStartTime: null
+  };
+  saveShift();
+  initTracker();
+}
+
+/* ===== تفعيل المتابعة ===== */
+function initTracker() {
+  if (!shiftData) return;
+
+  document.getElementById('setupSection').style.display = 'none';
+  document.getElementById('trackerSection').style.display = 'block';
+
+  const startDate = new Date(shiftData.startTime);
+  document.getElementById('displayStartTime').innerText =
+    startDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+
+  if (shiftData.isBreakActive) {
+    document.getElementById('breakBox').style.display = 'block';
+    document.getElementById('breakToggleBtn').style.display = 'none';
+  } else {
+    document.getElementById('breakBox').style.display = 'none';
+    document.getElementById('breakToggleBtn').style.display = 'flex';
+  }
+
+  if (timerInterval) clearInterval(timerInterval);
+  timerInterval = setInterval(updateTracker, 1000);
+  updateTracker();
+}
+
+/* =========================================================
+تحديث الحسابات
+========================================================= */
+function updateTracker() {
+  if (!shiftData) return;
+
+  const now = Date.now();
+  const totalShiftMs = shiftData.shiftHours * 3600 * 1000;
+
+  if (shiftData.isBreakActive) {
+    const tempBreak = (shiftData.breakMsTotal || 0) + (now - shiftData.breakStartTime);
+    const tempTarget = shiftData.startTime + totalShiftMs + tempBreak;
+    if (now >= tempTarget) {
+      shiftData.breakMsTotal = tempBreak;
+      shiftData.isBreakActive = false;
+      shiftData.breakStartTime = null;
+      saveShift();
+      document.getElementById('breakBox').style.display = 'none';
+      document.getElementById('breakToggleBtn').style.display = 'flex';
+      return updateTracker();
+    }
+  }
+
+  const currentBreakExtra = (shiftData.isBreakActive && shiftData.breakStartTime)
+    ? now - shiftData.breakStartTime : 0;
+
+  const totalBreakMs = (shiftData.breakMsTotal || 0) + currentBreakExtra;
+  const targetTimeMs = shiftData.startTime + totalShiftMs + totalBreakMs;
+
+  document.getElementById('targetTimeDisplay').innerText =
+    new Date(targetTimeMs).toLocaleTimeString('en-US',
+      { hour: 'numeric', minute: '2-digit', hour12: true });
+
+  const elapsedMs = Math.max(0, now - shiftData.startTime - totalBreakMs);
+  document.getElementById('elapsedTimeDisplay').innerText = fmtHMS(elapsedMs / 1000);
+
+  const remainingMs = targetTimeMs - now;
+  const badge = document.getElementById('statusBadge');
+  const caption = document.getElementById('timerCaption');
+  const breakBtn = document.getElementById('breakToggleBtn');
+
+  if (remainingMs <= 0) {
+    shiftEnded = true;
+    caption.innerText = 'الوقت الإضافي (أوفرتايم)';
+    document.getElementById('remainingTimeDisplay').innerText = '+' + fmtHMS(-remainingMs / 1000);
+    badge.className = 'status-badge status-done';
+    badge.innerText = 'انتهى الشيفت بنجاح! 🎉 مبروك الانصراف';
+    document.getElementById('progressText').innerText = 'نسبة الإنجاز: 100%';
+    updateRing(100);
+    breakBtn.disabled = true;
+  } else {
+    shiftEnded = false;
+    caption.innerText = 'الوقت المتبقي';
+    document.getElementById('remainingTimeDisplay').innerText = fmtHMS(remainingMs / 1000);
+
+    if (shiftData.isBreakActive) {
+      badge.className = 'status-badge status-break';
+      badge.innerText = 'في استراحة الآن ☕';
+    } else {
+      badge.className = 'status-badge status-normal';
+      badge.innerText = 'جاري العمل بتركيز... ⚡';
+    }
+
+    const progress = Math.min(100, Math.max(0, (elapsedMs / totalShiftMs) * 100));
+    document.getElementById('progressText').innerText = 'نسبة الإنجاز: ' + Math.floor(progress) + '%';
+    updateRing(progress);
+    breakBtn.disabled = false;
+  }
+
+  document.getElementById('breakTimeDisplay').innerText = Math.floor(totalBreakMs / 60000) + ' دقيقة';
+}
+
+/* ===== حلقة التقدم ===== */
+function updateRing(progress) {
+  const ring = document.getElementById('progressRing');
+  if (!ring) return;
+  const circumference = 2 * Math.PI * 90;
+  ring.style.strokeDasharray = circumference;
+  ring.style.strokeDashoffset = circumference - (progress / 100) * circumference;
+}
+
+/* ===== الاستراحة ===== */
+function toggleBreak() {
+  if (!shiftData || shiftEnded) return;
+
+  shiftData.isBreakActive = true;
+  shiftData.breakStartTime = Date.now();
+  saveShift();
+
+  document.getElementById('breakBox').style.display = 'block';
+  document.getElementById('breakToggleBtn').style.display = 'none';
+  updateTracker();
+}
+
+function endBreak() {
+  if (!shiftData || !shiftData.isBreakActive) return;
+
+  const breakDurationMs = Date.now() - shiftData.breakStartTime;
+  shiftData.breakMsTotal = (shiftData.breakMsTotal || 0) + breakDurationMs;
+  shiftData.isBreakActive = false;
+  shiftData.breakStartTime = null;
+  saveShift();
+
+  document.getElementById('breakBox').style.display = 'none';
+  document.getElementById('breakToggleBtn').style.display = 'flex';
+  updateTracker();
+}
+
+/* =========================================================
+إنهاء الشيفت
+========================================================= */
+function stopShift() {
+  if (!confirm('هل أنت متأكد من إنهاء الشيفت الحالي وتصفير البيانات؟')) return;
+
+  updateCurrentInHistory();
+
+  localStorage.removeItem('smartShiftData');
+  shiftData = null;
+  shiftEnded = false;
+  if (timerInterval) clearInterval(timerInterval);
+
+  document.getElementById('trackerSection').style.display = 'none';
+  document.getElementById('setupSection').style.display = 'block';
+  document.getElementById('breakBox').style.display = 'none';
+  document.getElementById('breakToggleBtn').style.display = 'flex';
+  document.getElementById('breakToggleBtn').disabled = false;
+  document.getElementById('timerCaption').innerText = 'الوقت المتبقي';
+  updateRing(0);
+}
+
+/* =========================================================
+سجل الشيفتات + تصدير CSV بدون تكرار
+========================================================= */
+const HISTORY_KEY = 'smartShiftHistory';
+
+function getHistory() {
+  try { return JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]'); }
+  catch (e) { return []; }
+}
+function saveHistory(h) {
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(h));
+}
+
+/* بناء صف واحد يمثل الشيفت الحالي */
+function buildCurrentRecord() {
+  if (!shiftData) return null;
+  const now = Date.now();
+  const totalShiftMs = shiftData.shiftHours * 3600 * 1000;
+  const extraBreak = (shiftData.isBreakActive && shiftData.breakStartTime)
+    ? now - shiftData.breakStartTime : 0;
+  const totalBreakMs = (shiftData.breakMsTotal || 0) + extraBreak;
+  const targetMs = shiftData.startTime + totalShiftMs + totalBreakMs;
+  const elapsedMs = Math.max(0, now - shiftData.startTime - totalBreakMs);
+
+  const startDate = new Date(shiftData.startTime);
+  const targetDate = new Date(targetMs);
+
+  return {
+    id: shiftData.startTime,
+    date: startDate.toLocaleDateString('ar-EG'),
+    startTime: startDate.toLocaleTimeString('en-US',
+      { hour: 'numeric', minute: '2-digit', hour12: true }),
+    endTime: targetDate.toLocaleTimeString('en-US',
+      { hour: 'numeric', minute: '2-digit', hour12: true }),
+    shiftHours: shiftData.shiftHours,
+    breakMinutes: Math.floor(totalBreakMs / 60000),
+    workedHours: (elapsedMs / 3600000).toFixed(2),
+    status: elapsedMs >= totalShiftMs ? 'مكتمل' : 'قيد العمل',
+    lastUpdate: new Date().toLocaleString('ar-EG')
+  };
+}
+
+/* تحديث/إضافة الشيفت الحالي في السجل (بدون تكرار) */
+function updateCurrentInHistory() {
+  const rec = buildCurrentRecord();
+  if (!rec) return;
+  const history = getHistory();
+  const idx = history.findIndex(h => h.id === rec.id);
+  if (idx >= 0) history[idx] = rec;
+  else history.push(rec);
+  saveHistory(history);
+}
+
+/* =========================================================
+تصدير إلى CSV — يفتح في Excel بدون إنترنت وبدون تحذيرات
+========================================================= */
+function exportToExcel() {
+  updateCurrentInHistory();
+  const history = getHistory();
+  if (!history.length) {
+    alert('لا توجد بيانات لتحميلها بعد. ابدأ شيفت أولاً.');
+    return;
+  }
+
+  history.sort((a, b) => b.id - a.id);
+
+  const headers = ['م', 'التاريخ', 'وقت الدخول', 'وقت الانصراف',
+    'مدة الشيفت (ساعة)', 'الاستراحة (دقيقة)',
+    'العمل الفعلي (ساعة)', 'الحالة', 'آخر تحديث'];
+
+  const esc = v => {
+    const s = String(v === null || v === undefined ? '' : v);
+    return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  };
+
+  const lines = [];
+  lines.push(headers.map(esc).join(','));
+  history.forEach((h, i) => {
+    lines.push([
+      i + 1,
+      h.date,
+      h.startTime,
+      h.endTime,
+      h.shiftHours,
+      h.breakMinutes,
+      h.workedHours,
+      h.status,
+      h.lastUpdate
+    ].map(esc).join(','));
+  });
+
+  // BOM ضروري لقراءة العربي بشكل صحيح في Excel
+  const csv = '\ufeff' + lines.join('\r\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'shift_report_' + new Date().toISOString().slice(0, 10) + '.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+/* =========================================================
+تصفير السجل بالكامل
+========================================================= */
+function clearHistory() {
+  const history = getHistory();
+  if (!history.length) {
+    alert('السجل فاضي أصلاً.');
+    return;
+  }
+  if (!confirm('هل أنت متأكد من حذف كل سجل الشيفتات؟ لا يمكن التراجع.')) return;
+  localStorage.removeItem(HISTORY_KEY);
+  alert('تم تصفير السجل بنجاح ✅');
+}
+
+/* حفظ دوري للسجل كل 30 ثانية + عند إغلاق الصفحة */
+setInterval(() => { if (shiftData) updateCurrentInHistory(); }, 30000);
+window.addEventListener('beforeunload', () => { if (shiftData) updateCurrentInHistory(); });
+
+/* ===== استرجاع الشيفت عند فتح الصفحة ===== */
+if (shiftData) initTracker();
+</script>
+</body>
+</html>
